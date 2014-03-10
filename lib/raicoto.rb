@@ -1,5 +1,5 @@
 require "raicoto/version"
 
-module Raicoto
-  # Your code goes here...
+if defined?(Rails)
+  require 'raicoto/railtie'
 end

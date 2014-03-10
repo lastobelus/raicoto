@@ -7,6 +7,9 @@ class ActiveRecord::Base
     attrs.uniq!
     lengths = {}
     records = self.all
+    if records.count < 1
+      return
+    end
     records.each do |r|
       attrs.each do |a|
         val = r
@@ -16,7 +19,6 @@ class ActiveRecord::Base
         lengths[a] = [lengths[a], len].max
       end
     end
-    
     out = [attrs.map{|a| a.rjust(lengths[a]+1)}.join]
     out += records.map { |r|
       line = ""
