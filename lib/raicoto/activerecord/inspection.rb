@@ -68,7 +68,7 @@ module ActiveRecord
           result = ActiveRecord::Base.connection.execute(sql)
           count = result.first['count']
           total += count.to_i
-          out << ".#{table.ljust(col)} #{count.rjust(5)}"
+          out << ".#{table.ljust(col-1)} #{count.rjust(5)}"
           out << "\n"
         end
       end
