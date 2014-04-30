@@ -35,6 +35,10 @@ class ActiveRecord::Base
       out.length - 1
     end
   end
+  
+  def self.map(&block)
+    self.all.map(&block)
+  end
 end
 
 module ActiveRecord
