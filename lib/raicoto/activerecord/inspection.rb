@@ -10,6 +10,10 @@ class ActiveRecord::Base
 end
 
 module ActiveRecord
+  def self.tables
+    ActiveRecord::Base.connection.tables
+  end
+  
   def self.without_logging
     old_logger = ActiveRecord::Base.logger
     ActiveRecord::Base.logger = nil
