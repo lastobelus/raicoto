@@ -16,7 +16,7 @@ module Raicoto
         records.each do |r|
           attrs.each do |a|
             val = r
-            a.split('.').map{|path| val = val.send(path)}
+            a.split('.').map{|path| val = val && val.try(path)}
             len = val.to_s.length
             lengths[a] ||= a.length
             lengths[a] = [lengths[a], len].max
@@ -27,7 +27,7 @@ module Raicoto
           line = ""
           attrs.each do |a|
             val = r
-            a.split('.').map{|path| val = val.send(path)}
+            a.split('.').map{|path| val = val && val.try(path)}
             line << val.to_s.rjust(lengths[a]+1)
           end
           line
